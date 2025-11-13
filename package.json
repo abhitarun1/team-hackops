@@ -1,0 +1,31 @@
+{
+  "name": "decentralized-identity-vault",
+  "version": "1.0.0",
+  "description": "Blockchain-based Decentralized Digital Identity and Credential Vault",
+  "private": true,
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "install:all": "npm install",
+    "install:contracts": "cd packages/contracts && npm install",
+    "install:web": "cd apps/web && npm install",
+    "build:contracts": "cd packages/contracts && npm run build",
+    "build:web": "cd apps/web && npm run build",
+    "test:contracts": "cd packages/contracts && npm test",
+    "test:web": "cd apps/web && npm test",
+    "dev:web": "cd apps/web && npm start"
+  },
+  "keywords": [
+    "blockchain",
+    "DID",
+    "verifiable-credentials",
+    "self-sovereign-identity",
+    "IPFS",
+    "web3"
+  ],
+  "author": "",
+  "license": "MIT"
+}
+

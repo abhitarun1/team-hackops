@@ -1,0 +1,34 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@identity-vault/crypto-utils": ["../../packages/crypto-utils/src"],
+      "@identity-vault/crypto-utils/*": ["../../packages/crypto-utils/src/*"],
+      "@identity-vault/did-core": ["../../packages/did-core/src"],
+      "@identity-vault/did-core/*": ["../../packages/did-core/src/*"],
+      "@identity-vault/ipfs-client": ["../../packages/ipfs-client/src"],
+      "@identity-vault/ipfs-client/*": ["../../packages/ipfs-client/src/*"],
+      "@identity-vault/api": ["../../packages/api/src"],
+      "@identity-vault/api/*": ["../../packages/api/src/*"]
+    }
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}
+
