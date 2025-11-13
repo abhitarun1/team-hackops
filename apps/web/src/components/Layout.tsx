@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useWallet } from '../contexts/WalletContext';
+import { useAuth } from '../contexts/AuthContext';
 
 interface LayoutProps {
   children: ReactNode;
@@ -8,10 +9,17 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
+  const navigate = useNavigate();
   const { isConnected, address, connectWallet, disconnectWallet } = useWallet();
+  const { logout, userId } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   const navigation = [
-    { name: 'Dashboard', path: '/' },
+    { name: 'Dashboard', path: '/dashboard' },
     { name: 'DID Management', path: '/did' },
     { name: 'Credentials', path: '/credentials' },
     { name: 'Issue Credential', path: '/credentials/issue' },
@@ -44,7 +52,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                 ))}
               </div>
             </div>
-            <div className="flex items-center">
+            <div className="flex items-center space-x-4">
+              {userId && (
+                <span className="text-sm text-gray-600">
+                  {userId}
+                </span>
+              )}
               {isConnected ? (
                 <div className="flex items-center space-x-4">
                   <span className="text-sm text-gray-600">
@@ -54,7 +67,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                     onClick={disconnectWallet}
                     className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700"
                   >
-                    Disconnect
+                    Disconnect Wallet
                   </button>
                 </div>
               ) : (
@@ -65,6 +78,12 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
                   Connect Wallet
                 </button>
               )}
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-sm font-medium text-white bg-gray-600 rounded-md hover:bg-gray-700"
+              >
+                Logout
+              </button>
             </div>
           </div>
         </div>
