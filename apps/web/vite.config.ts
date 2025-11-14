@@ -13,9 +13,26 @@ export default defineConfig({
       '@identity-vault/api': path.resolve(__dirname, '../../packages/api/src'),
     },
   },
+  build: {
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true
+    },
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'web3-vendor': ['ethers', 'web3'],
+        }
+      }
+    }
+  },
   server: {
     port: 3000,
     open: true
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom', 'ethers']
   }
 });
 
