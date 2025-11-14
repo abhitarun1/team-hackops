@@ -13,6 +13,7 @@
     "install:web": "cd apps/web && npm install",
     "build:contracts": "cd packages/contracts && npm run build",
     "build:web": "cd apps/web && npm run build",
+    "build": "npm run build:web",
     "test:contracts": "cd packages/contracts && npm test",
     "test:web": "cd apps/web && npm test",
     "dev:web": "cd apps/web && npm start"
