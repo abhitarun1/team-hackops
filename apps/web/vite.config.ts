@@ -14,17 +14,12 @@ export default defineConfig({
     },
   },
   build: {
+    target: 'esnext',
+    minify: 'esbuild',
+    sourcemap: false,
     commonjsOptions: {
       include: [/node_modules/],
       transformMixedEsModules: true
-    },
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'web3-vendor': ['ethers', 'web3'],
-        }
-      }
     }
   },
   server: {
